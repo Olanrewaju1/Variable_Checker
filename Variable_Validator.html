@@ -1,0 +1,61 @@
+<!--Javascript variable name does not support special characters or symbol except $ or _. 
+Write a function isValidVariable which check if a variable is valid or invalid variable
+
+/* A valid variable consist the following:
+1.Names can contain letters, digits, underscores, and dollar signs
+2.Names must begin with a letter 
+3.Names can also a begin with $ and _-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Variable Checker</title>
+    </head>
+    <body>
+        
+            <label>Variable to be Check</label>
+            <input type="text"  class= "variable_name"/>
+            <button value = "Check"  onclick="isValidVariable()">CHECK VALIDITY</button>
+        
+
+        <p class="displayVariable"></p>
+        
+
+        <script>
+            
+            const displayVariable = document.querySelector(".displayVariable");
+            const validVariableCharacter = ["A","B","C","D","E","F","G","H","I","J","K"
+            ,"L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e"
+            ,"f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","0","_","$"]
+            const validVariableStarter = ["A","B","C","D","E","F","G","H","I","J","K"
+            ,"L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e"
+            ,"f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","_","$"]
+            
+            function validStart(variable){
+                let isValid = validVariableStarter.includes(variable[0])?true:false
+                return isValid
+            }
+            function validCharacter(variable){
+                let isValid=true
+                for(let i=1;i<variable.length;i++){
+                if(!validVariableCharacter.includes(variable[i])){
+                isValid=false
+                break;
+                }
+            }
+                return isValid
+            }
+
+
+            function isValidVariable(){
+                const variableName = document.querySelector(".variable_name").value;
+                let isValid=validStart(variableName)&&validCharacter(variableName)?`${variableName} is a valid variable`:
+                `${variableName} is an invalid variable`
+            displayVariable.innerHTML= isValid
+        }
+
+        </script>
+    </body>
+</html>
+
+
